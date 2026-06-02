@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_02_045018) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_02_090051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,9 +22,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_045018) do
   end
 
   create_table "pets", force: :cascade do |t|
+    t.integer "age"
     t.string "breed"
     t.datetime "created_at", null: false
     t.string "name"
+    t.string "species"
     t.datetime "updated_at", null: false
     t.integer "weight"
   end
@@ -197,8 +199,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_045018) do
     t.datetime "created_at", null: false
     t.string "description"
     t.string "diseases"
+    t.bigint "pet_id"
     t.string "target_species"
     t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_vaccinations_on_pet_id"
   end
 
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
@@ -207,4 +211,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_045018) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "vaccinations", "pets"
 end

@@ -5,6 +5,10 @@ class PetsController < ApplicationController
     @pets = Pet.all
   end
 
+  def show
+    @pet = Pet.find(params[:id])
+  end
+
   def new
     @pet = Pet.new
   end
@@ -17,9 +21,6 @@ class PetsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
   end
 
   private
