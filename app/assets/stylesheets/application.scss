@@ -10,4 +10,21 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "pets/dashboard"
+@import "pets/dashboard";
+
+.grass {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  z-index: 1;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #4caf50 0px,
+      #4caf50 8px,
+      #5cb85c 8px,
+      #5cb85c 16px
+    );
+}
