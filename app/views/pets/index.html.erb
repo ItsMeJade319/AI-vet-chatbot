@@ -6,8 +6,9 @@
     <%= link_to "Add Pet",
         new_pet_path,
         class: "button-add-pet" %>
-    <%= link_to "Loggout",
-        new_pet_path,
+    <%=button_to "Logout",
+        destroy_user_session_path, method: :delete,
+        form: { data: { turbo_confirm: "Are you sure you want to log out?" } },
         class: "button-loggout" %>
    </div>
   </div>
