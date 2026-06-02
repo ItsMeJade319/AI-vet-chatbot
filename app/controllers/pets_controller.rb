@@ -1,6 +1,4 @@
 class PetsController < ApplicationController
-  skip_before_action :authenticate_user!
-
   def index
     @pets = Pet.all
   end
