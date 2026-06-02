@@ -2,14 +2,15 @@
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>My Pets</h1>
 
+<div class="d-flex gap-2">
     <%= link_to "Add Pet",
         new_pet_path,
         class: "button-add-pet" %>
     <%= link_to "Loggout",
         new_pet_path,
         class: "button-loggout" %>
+   </div>
   </div>
-
   <div class="row">
     <% @pets.each do |pet| %>
       <div class="col-md-4 mb-4">
