@@ -1,7 +1,31 @@
-<h1>My pets</h1>
-<ul>
-  <% @pets.each do |pet| %>
-  <li><%= pet.name %></li>
-  <% end %>
-</ul>
-<%= link_to "register a new pet", new_pet_path %>
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>My Pets</h1>
+
+<div class="d-flex gap-2">
+    <%= link_to "Add Pet",
+        new_pet_path,
+        class: "button-add-pet" %>
+    <%= link_to "Loggout",
+        new_pet_path,
+        class: "button-loggout" %>
+   </div>
+  </div>
+  <div class="row">
+    <% @pets.each do |pet| %>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><%= pet.name %></h5>
+            <p class="card-text">
+            </p>
+
+            <%= link_to "View",
+                pet_path(pet),
+                class: "button-view" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
