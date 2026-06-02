@@ -1,0 +1,7 @@
+<h1>My pets</h1>
+<ul>
+  <% @pets.each do |pet| %>
+  <li><%= pet.name %></li>
+  <% end %>
+</ul>
+<%= link_to "register a new pet", new_pet_path %>
