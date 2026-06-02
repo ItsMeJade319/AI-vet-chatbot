@@ -60,15 +60,19 @@
 }
 
 .dog-container {
-  position: relative;
+  position: fixed;
+  bottom: 70px; /* adjust based on grass height */
+  left: 0;
+  width: 100vw;
   height: 150px;
   overflow: hidden;
+  z-index: 2;
 }
 
 .dog {
   position: absolute;
   bottom: 0;
-  left: -120px;
+  left: -150px;
   width: 150px;
 
   animation:
@@ -94,4 +98,21 @@
   to {
     transform: translateY(-8px);
   }
+}
+
+.grass {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  z-index: 1;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #4caf50 0px,
+      #4caf50 8px,
+      #5cb85c 8px,
+      #5cb85c 16px
+    );
 }
