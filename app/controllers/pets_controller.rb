@@ -6,7 +6,7 @@ class PetsController < ApplicationController
   def show
     @pet = Pet.find(params[:id])
     @conversations = @pet.problems
-    raise
+    # raise
   end
 
   def new

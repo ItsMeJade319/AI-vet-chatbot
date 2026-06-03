@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
    resources :pets do
-    resources :problem
+    resources :problems, only: [:create, :new]
+  end
+
+  resources :problems, only: :show do
+    resources :messages, only: [:create]
   end
 
 end
