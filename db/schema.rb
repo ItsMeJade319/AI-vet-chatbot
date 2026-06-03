@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_03_022152) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_03_041113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -37,8 +37,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_022152) do
     t.datetime "created_at", null: false
     t.string "description"
     t.string "outcome"
+    t.bigint "pet_id", null: false
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_problems_on_pet_id"
   end
 
   create_table "solid_cable_messages", force: :cascade do |t|
@@ -208,6 +210,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_022152) do
   end
 
   add_foreign_key "pets", "users"
+  add_foreign_key "problems", "pets"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
