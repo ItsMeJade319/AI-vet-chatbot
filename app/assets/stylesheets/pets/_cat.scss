@@ -1,0 +1,111 @@
+.cat-container {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  z-index: 100;
+}
+
+.cat {
+  position: relative;
+  width: 180px;
+  height: 140px;
+}
+
+/* Tail */
+.tail {
+  position: absolute;
+  width: 20px;
+  height: 90px;
+  background: #f4a460;
+  border-radius: 20px;
+  left: 15px;
+  top: 20px;
+
+  transform-origin: bottom center;
+  animation: wag 0.8s ease-in-out infinite alternate;
+}
+
+/* Body */
+.body {
+  position: absolute;
+  bottom: 0;
+  left: 40px;
+
+  width: 120px;
+  height: 70px;
+
+  background: #f4a460;
+  border-radius: 60px;
+}
+
+/* Head */
+.head {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+
+  background: #f4a460;
+  border-radius: 50%;
+
+  top: -50px;
+  left: 30px;
+}
+
+/* Ears */
+.ear {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: #f4a460;
+
+  transform: rotate(45deg);
+}
+
+.ear-left {
+  top: -10px;
+  left: 10px;
+}
+
+.ear-right {
+  top: -10px;
+  right: 10px;
+}
+
+/* Eyes */
+.eye {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  top: 35px;
+}
+
+.eye-left {
+  left: 22px;
+}
+
+.eye-right {
+  right: 22px;
+}
+
+/* Nose */
+.nose {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: pink;
+  border-radius: 50%;
+  left: 35px;
+  top: 48px;
+}
+
+@keyframes wag {
+  from {
+    transform: rotate(-25deg);
+  }
+
+  to {
+    transform: rotate(25deg);
+  }
+}
