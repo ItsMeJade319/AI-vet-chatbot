@@ -1,6 +1,5 @@
 <div class="container">
 
-  <%= link_to "home", pets_path  %>
   <div class="row justify-content-center">
     <div class="col-md-8 text-center mt-5">
 
@@ -12,11 +11,19 @@
         Get instant guidance for your pet's health, organize medical records,
         and chat with an AI assistant trained to help pet owners.
       </p>
-
-   <div class=" text-center d-flex gap-3 justify-content-center">
-    <%= link_to "Login", new_user_session_path, class: "button-56" %>
-    <%= link_to "Sign Up", new_user_registration_path, class: "button-signup" %>
-    </div>
+      <% if user_signed_in? %>
+      <div class="border border-dark p-4 rounded-5">
+      <div class="mb-4"><h4 class="display-6">Welcome <%= current_user.username.capitalize %></h4></div>
+      <div class=" text-center d-flex gap-3 justify-content-center">
+        <%= link_to "See my pets", pets_path, class: "button-signup"  %>
+      </div>
+      </div>
+      <% else %>
+        <div class=" text-center d-flex gap-3 justify-content-center">
+          <%= link_to "Login", new_user_session_path, class: "button-login" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "button-signup" %>
+        </div>
+      <% end %>
 
 
 
