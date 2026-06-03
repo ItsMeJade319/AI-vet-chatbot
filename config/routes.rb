@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
    resources :pets do
-    resources :chat
+    resources :problem
   end
 
 end
