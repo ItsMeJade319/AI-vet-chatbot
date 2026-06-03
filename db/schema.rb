@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_02_090051) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_03_022152) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -28,7 +28,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_090051) do
     t.string "name"
     t.string "species"
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.integer "weight"
+    t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
   create_table "problems", force: :cascade do |t|
@@ -205,6 +207,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_02_090051) do
     t.index ["pet_id"], name: "index_vaccinations_on_pet_id"
   end
 
+  add_foreign_key "pets", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
