@@ -1,6 +1,6 @@
 <%= simple_form_for [@pet, @problem] do |f| %>
   <%= f.input :description,
-              as: :text,
+              as: :string,
               label: "What is the issue?",
               placeholder: "Write a detailed description here...",
               input_html: { rows: 5, maxlength: 500 } %>

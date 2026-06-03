@@ -2,7 +2,7 @@
 
   <div class="h-100 border" style="width: 300px">
     <div>
-      <%= link_to "New Chat", "", class: "button-newchat mb-5" %>
+      <%= link_to "New Chat", new_pet_problem_path(@pet), class: "button-newchat mb-5" %>
     </div>
 
     <div class="card mx-2">
@@ -25,13 +25,16 @@
     </div>
 
     <div class="column">
-      <% @problems.each do |problem|%>
-      <div class="card mx-2">
-        <div class="card-body">
-          <p style="font-weight: 600; font-size: 16px;"><%= problem.title %></p>
-          <p style="font-size: 13px; color: #808080"><%= problem.description %></p>
-        </div>
-      </div>
+      <% if @problems.count > 0 %>
+        <% @problems.each do |problem|%>
+          <div class="card mx-2">
+            <div class="card-body">
+              <p style="font-weight: 600; font-size: 16px;"><%= problem.title %></p>
+              <p style="font-size: 13px; color: #808080"><%= problem.description %></p>
+            </div>
+          </div>
+        <% end %>
+
       <% end %>
 
 
