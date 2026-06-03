@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_03_041113) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_03_065910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
     t.datetime "created_at", null: false
+    t.bigint "problem_id", null: false
     t.string "role"
     t.datetime "updated_at", null: false
+    t.index ["problem_id"], name: "index_messages_on_problem_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -209,6 +211,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_041113) do
     t.index ["pet_id"], name: "index_vaccinations_on_pet_id"
   end
 
+  add_foreign_key "messages", "problems"
   add_foreign_key "pets", "users"
   add_foreign_key "problems", "pets"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

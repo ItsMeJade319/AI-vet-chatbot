@@ -17,11 +17,12 @@ class ProblemsController < ApplicationController
 
   def show
     @problem = Problem.find(params[:id])
+    @message = Message.new
   end
 
   private
 
   def problem_params
-    params.require(:problem).permit(:content)
+    params.require(:problem).permit(:description)
   end
 end
