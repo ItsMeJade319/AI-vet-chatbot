@@ -1,6 +1,15 @@
-<%= simple_form_for(@pet) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :breed %>
-  <%= f.input :weight %>
-  <%= f.submit %>
-<% end %>
+
+<div class="form-page">
+  <div class="form-card">
+    <h1>Add a New Pet</h1>
+
+    <%= simple_form_for(@pet) do |f| %>
+     <%= f.input :name %>
+      <%= f.input :species %>
+      <%= f.input :breed %>
+      <%= f.input :age %>
+      <%= f.input :weight %>
+      <%= f.submit "Create Pet", class: "btn-primary-custom" %>
+    <% end %>
+  </div>
+</div>
