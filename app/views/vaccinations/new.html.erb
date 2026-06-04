@@ -1,0 +1,31 @@
+<h1>Add Vaccination</h1>
+<div class="vaccination-form">
+  <div class="card vaccination-card">
+    <div class="card-body">
+
+<%= form_with model: [@pet, @vaccination] do |f| %>
+
+  <div class="mb-3">
+    <%= f.label :brand %>
+    <%= f.text_field :brand, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :diseases %>
+    <%= f.text_field :diseases, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :target_species %>
+    <%= f.select :target_species,
+          ["dog", "cat", "other"],
+          {},
+          class: "form-control" %>
+  </div>
+
+  <%= f.submit "Add Vaccination", class: "btn btn-primary" %>
+
+<% end %>
+    </div>
+  </div>
+</div>

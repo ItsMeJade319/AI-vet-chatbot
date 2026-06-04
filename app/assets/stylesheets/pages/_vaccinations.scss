@@ -1,20 +1,20 @@
-.form-page {
+.vaccination-form {
   min-height: 100vh;
   display: flex;
+  justify-content: center;
   align-items: center;
   background: #f7f7f7;
 }
 
-.form-card {
+
+.vaccination-card {
   width: 500px;
   max-width: 90%;
   background: white;
-  justify-content: center;
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
-
 
 .btn-primary-custom {
   width: 40%;
@@ -32,9 +32,4 @@
   &:hover {
     background: #39bc05;
   }
-}
-
-.devise-links {
-    padding: 12px;
-  justify-content: center;
 }
