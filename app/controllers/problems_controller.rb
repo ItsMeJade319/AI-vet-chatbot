@@ -2,6 +2,11 @@ class ProblemsController < ApplicationController
   def new
     @problem = Problem.new
     @pet = Pet.find(params[:pet_id])
+
+    respond_to do |format|
+      format.turbo_stream # renders `app/views/messages/create.turbo_stream.erb`
+      format.html
+    end
   end
 
   def create
