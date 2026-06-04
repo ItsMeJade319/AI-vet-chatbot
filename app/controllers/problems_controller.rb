@@ -2,6 +2,14 @@ class ProblemsController < ApplicationController
   def new
     @problem = Problem.new
     @pet = Pet.find(params[:pet_id])
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update("main_panel", partial: "problems/form",
+                                                               locals: { pet: @pet, problem: @problem })
+      end
+      format.html
+    end
   end
 
   def create
@@ -20,6 +28,14 @@ class ProblemsController < ApplicationController
   def show
     @problem = Problem.find(params[:id])
     @message = Message.new
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update("main_panel", partial: "problems/chat",
+                                                               locals: { problem: @problem, message: @message })
+      end
+      format.html
+    end
   end
 
   private
