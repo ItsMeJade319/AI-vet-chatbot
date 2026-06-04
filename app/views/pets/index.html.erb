@@ -31,10 +31,12 @@
               </div>
               <h5 class="card-title mb-0"><%= pet.name.capitalize %></h5>
             </div>
+            <div>
             <%= link_to "View",
                 pet_path(pet),
-                class: "button-view" %>
+                class: "button-view" %> |
             <%= link_to "Edit", edit_pet_path(pet) %>
+            </div>
           </div>
         </div>
       </div>

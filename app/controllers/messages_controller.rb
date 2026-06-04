@@ -22,7 +22,7 @@ class MessagesController < ApplicationController
   private
 
   def pet_context
-    "Here is the description and details of my pet age: #{@pet.age}, name: #{@pet.name}, species #{@pet.species}
+    "Here is the description and details of my pet years: #{@pet.age_years}, months: #{@pet.age_months} name: #{@pet.name}, species #{@pet.species}
     breed: #{@pet.breed}, weight: #{@pet.weight}kg"
   end
 

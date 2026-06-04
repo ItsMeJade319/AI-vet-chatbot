@@ -1,63 +1,48 @@
 
 <div class="form-page">
   <div class="form-card">
-    <h1>Add a New Pet</h1>
+      <h1>Add a New Pet</h1>
 
 
 
-   <%= simple_form_for(@pet) do |f| %>
-      <%= f.input :name %>
+    <%= simple_form_for(@pet) do |f| %>
+        <%= f.input :name %>
 
 
-<div class="mb-3">
-  <h6>Age</h6>
+  <div class="mb-3">
+    <h6>Age</h6>
 
-  <div class="d-flex align-items-center gap-2">
+    <div class="d-flex align-items-center gap-2">
 
-  <%= f.select :age,
-      (0..30).to_a,
-      { prompt: "Year" },
-      { class: "form-select" } %>
+    <%= f.select :age_years,
+        (0..30).to_a,
+        { prompt: "Year" },
+        { class: "form-select" } %>
 
-  <span>Years</span>
 
-  <%= f.select :age,
-      (0..11).to_a,
-      { prompt: "Month" },
-      { class: "form-select" } %>
+    <%= f.select :age_months,
+        (0..11).to_a,
+        { prompt: "Month" },
+        { class: "form-select" } %>
 
-  <span>Months</span>
 
-</div>
+  </div>
 
-<%= f.input :species,
-    collection: ["Dog", "Cat", "Rabbit", "Bird", "Other"],
-    prompt: "Select a species",
-    input_html: { id: "species-select" } %>
+  <div id="other-species-field">
+    <%= f.input :species%>
+  </div>
 
-<div id="other-species-field" style="display: none;">
-  <%= f.input :species,
-      label: "If other, please specify",
-      required: false %>
-</div>
-
-<%= f.input :breed,
-    collection: [],
-    prompt: "Select a breed",
-    input_html: { id: "breed-select" } %>
-
-<div id="other-breed-field" style="display: none;">
-  <%= f.input :breed,
-      label: "If other, please specify",
-      required: false %>
-</div>
+  <div id="other-breed-field">
+    <%= f.input :breed %>
+  </div>
 
 
 
 
-  <%= f.input :weight, label: "Weight (kg)" %>
+    <%= f.input :weight, label: "Weight (kg)" %>
 
-  <%= f.button :submit, class: "btn-primary-custom d-flex"%>
-<% end %>
-</div>
+    <%= f.button :submit, class: "btn-primary-custom d-flex"%>
+  <% end %>
+  </div>
+  </div>
 </div>
