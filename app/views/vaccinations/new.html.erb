@@ -1,4 +1,7 @@
 <h1>Add Vaccination</h1>
+<div class="vaccination-form">
+  <div class="card vaccination-card">
+    <div class="card-body">
 
 <%= form_with model: [@pet, @vaccination] do |f| %>
 
@@ -23,3 +26,6 @@
   <%= f.submit "Add Vaccination", class: "btn btn-primary" %>
 
 <% end %>
+    </div>
+  </div>
+</div>

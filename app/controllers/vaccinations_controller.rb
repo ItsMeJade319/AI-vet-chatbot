@@ -20,6 +20,7 @@ class VaccinationsController < ApplicationController
   def vaccination_params
     params.require(:vaccination).permit(
       :brand,
+      :description,
       :diseases,
       :target_species
     )
