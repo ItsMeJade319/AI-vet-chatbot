@@ -5,7 +5,7 @@
       <%= link_to "New Chat", new_pet_problem_path(@pet), class: "button-newchat mb-5" %>
     </div>
 
-    <div class="card mx-2" style="background: #ffffed ">
+    <div class="card mx-2" style="background: #f6f6c4 ">
       <div class="card-body ">
         <div class="d-flex flex-row align-items-center">
           <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1; ">🐕</div>
@@ -27,7 +27,7 @@
     <div class="column">
       <% if @problems.count > 0 %>
         <% @problems.each do |problem|%>
-          <div class="card mx-2 my-2" style="background: #ffffed ">
+          <div class="card mx-2 my-2" style="background: #f6f6c4  ">
             <div class="card-body">
               <p style="font-weight: 600; font-size: 16px;"><%= problem.title %></p>
               <p style="font-size: 13px; color: #808080"><%= problem.description %></p>
