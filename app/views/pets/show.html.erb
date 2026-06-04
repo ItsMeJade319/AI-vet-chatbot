@@ -2,7 +2,7 @@
 
   <div class="h-100 border" style="width: 400px;" id="sidebar">
     <div>
-      <%= link_to "New Chat", new_pet_problem_path(@pet), class: "button-newchat mb-5", data: { turbo: false, confirm: "Are you sure?" } %>
+      <%= link_to "New Chat", new_pet_problem_path(@pet), class: "button-newchat mb-5", data: { turbo_stream: true } %>
     </div>
 
     <div class="card mx-2" style="background: #f6f6c4 ">
