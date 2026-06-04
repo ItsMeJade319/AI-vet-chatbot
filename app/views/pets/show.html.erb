@@ -8,8 +8,17 @@
     <div class="card mx-2" style="background: #ffffed ">
       <div class="card-body ">
         <div class="d-flex flex-row align-items-center">
-          <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1; ">🐕</div>
+          <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1; ">
+          <% if @pet.species == "dog" %>
+            🐕
+          <% elsif @pet.species == "cat" %>
+            🐈
+          <% else %>
+            🐾
+          <% end %>
 
+
+           </div>
           <div class="">
             <h3 style="margin-bottom: -3px"><%= @pet.name %></h3>
             <span style="font-size: 13px"><%= @pet.breed %></span>
@@ -24,8 +33,10 @@
       <p style="font-size: 12px">RECENT CONVERSATIONS</p>
     </div>
 
+
     <div class="column">
       <% if @problems.count > 0 %>
+      <div class="chat-list">
         <% @problems.each do |problem|%>
           <div class="card mx-2 my-2" style="background: #ffffed ">
             <div class="card-body">
@@ -37,7 +48,7 @@
       <% end %>
     </div>
   </div>
-
+</div>
   <div class="h-100 w-100" >
     <div class="mx-auto mt-5" style="max-width: 600px">
       <div style="text-align: center">
@@ -49,7 +60,14 @@
     <div class="card mx-2">
       <div class="card-body ">
         <div class="d-flex flex-row align-items-center">
-          <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1; ">🐕</div>
+          <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1; "><% if @pet.species == "dog" %>
+            🐕
+          <% elsif @pet.species == "cat" %>
+            🐈
+          <% else %>
+            🐾
+          <% end %></div>
+
 
           <div class="">
             <h3 style="margin-bottom: -3px"><%= @pet.name %></h3>
@@ -57,6 +75,7 @@
             <span style="font-size: 13px"><%= @pet.age %>y</span>
             <span style="font-size: 13px"><%= @pet.weight %> kg</span>
           </div>
+          <%= link_to "Add vaccines", new_pet_vaccination_path(@pet), class: "button-vaccines ms-auto " %>
         </div>
 
         <div>
