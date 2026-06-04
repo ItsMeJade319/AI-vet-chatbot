@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
 
   def pet_context
     "Here is the description and details of my pet age: #{@pet.age}, name: #{@pet.name}, species #{@pet.species}
-    breed: #{@pet.breed}, weight: #{@pet.weight}"
+    breed: #{@pet.breed}, weight: #{@pet.weight}kg"
   end
 
   def build_conversation_history
