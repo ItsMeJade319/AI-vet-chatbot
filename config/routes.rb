@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
    resources :pets do
     resources :problems, only: [:create, :new]
-    resources :vaccinations, only: [:new, :create, :index]
-
   end
 
   resources :problems, only: :show do
