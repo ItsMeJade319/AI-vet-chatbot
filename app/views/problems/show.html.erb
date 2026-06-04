@@ -1,0 +1,23 @@
+<h1><%= @problem.title %></h1>
+<hr>
+<% @problem.messages.each do |message| %>
+  <% if message.role == "user" %>
+  <div class="d-flex justify-content-end mb-2">
+    <div class="bg-white px-3 pb-0 pt-3 rounded-pill">
+      <%= message.content %>
+    </div>
+  </div>
+<% elsif message.role == "assistant" %>
+  <div class="d-flex justify-content-start mb-5">
+    <div class="px-3 pb-0 pt-3">
+      <%= message.content %>
+    </div>
+  </div>
+<% end %>
+<% end %>
+
+
+<%= simple_form_for [@problem, @message] do |f| %>
+  <%= f.input :content, label: "Ask a question", required: true, placeholder: "Ask for help" %>
+  <%= f.button :submit, 'Ask LLM', class: 'btn btn-primary' %>
+<% end %>

@@ -5,6 +5,9 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @problems = @pet.problems
+    @vaccinations = @pet.vaccinations
+    # raise
   end
 
   def new
@@ -22,9 +25,23 @@ class PetsController < ApplicationController
     end
   end
 
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
+  def update
+    @pet = Pet.find(params[:id])
+
+    if @pet.update(pet_params)
+      redirect_to @pet
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :weight, :breed)
+    params.require(:pet).permit(:name, :weight, :species, :breed, :age)
   end
 end

@@ -1,1 +1,78 @@
-<%= link_to "new chat", new_pet_problem_path(@pet)  %>
+<div class="d-flex flex-row vh-100">
+
+  <div class="h-100 border" style="width: 400px;">
+    <div>
+      <%= link_to "New Chat", new_pet_problem_path(@pet), class: "button-newchat mb-5" %>
+    </div>
+
+    <div class="card mx-2" style="background: #f6f6c4 ">
+      <div class="card-body ">
+        <div class="d-flex flex-row align-items-center">
+          <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1; ">🐕</div>
+
+          <div class="">
+            <h3 style="margin-bottom: -3px"><%= @pet.name %></h3>
+            <span style="font-size: 13px"><%= @pet.breed %></span>
+            <span style="font-size: 13px"><%= @pet.age %>y</span>
+            <span style="font-size: 13px"><%= @pet.weight %> kg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="column ms-4 my-4">
+      <p style="font-size: 12px">RECENT CONVERSATIONS</p>
+    </div>
+
+    <div class="column">
+      <% if @problems.count > 0 %>
+        <% @problems.each do |problem|%>
+          <div class="card mx-2 my-2" style="background: #f6f6c4  ">
+            <div class="card-body">
+              <p style="font-weight: 600; font-size: 16px;"><%= problem.title %></p>
+              <p style="font-size: 13px; color: #808080"><%= problem.description %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="h-100 w-100" >
+    <div class="mx-auto mt-5" style="max-width: 600px">
+      <div style="text-align: center">
+        <p style="font-size: 24px; font-weight: 700;">How can I help   <span style="background-image: linear-gradient(to right, #ff7e5f, #feb47b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent; display: inline-block;">
+        <%= @pet.name.capitalize %></span> today?</p>
+        <p>Ask me anything about <%= @pet.name.capitalize %>'s health, nutrition, behavior, or care. I'm here to provide personalized veterinary guidance.</p>
+      </div>
+
+    <div class="card mx-2">
+      <div class="card-body ">
+        <div class="d-flex flex-row align-items-center">
+          <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1; ">🐕</div>
+
+          <div class="">
+            <h3 style="margin-bottom: -3px"><%= @pet.name %></h3>
+            <span style="font-size: 13px"><%= @pet.breed %></span>
+            <span style="font-size: 13px"><%= @pet.age %>y</span>
+            <span style="font-size: 13px"><%= @pet.weight %> kg</span>
+          </div>
+        </div>
+
+        <div>
+            <% @vaccinations.each do |vaccination| %>
+              <div class="card my-2">
+                <div class="card-body">
+                  <p><%= vaccination.brand %></p>
+                </div>
+
+              </div>
+            <% end %>
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  </div>
+</div>

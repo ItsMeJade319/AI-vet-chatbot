@@ -8,51 +8,45 @@ document.addEventListener("turbo:load", () => {
   const speciesSelect = document.getElementById("species-select");
   const breedSelect = document.getElementById("breed-select");
 
-  if (!speciesSelect || !breedSelect) return;
+  const otherSpeciesField = document.getElementById("other-species-field");
+  const otherBreedField = document.getElementById("other-breed-field");
 
   const breeds = {
-    Dog: [
-      "Golden Retriever",
-      "Poodle",
-      "Beagle",
-      "Labrador",
-      "Other"
-    ],
-    Cat: [
-      "Persian",
-      "Siamese",
-      "Maine Coon",
-      "British Shorthair",
-      "Other"
-    ],
-    Rabbit: [
-      "Holland Lop",
-      "Netherland Dwarf",
-      "Lionhead",
-      "Other"
-    ],
-    Bird: [
-      "Parakeet",
-      "Cockatiel",
-      "Lovebird",
-      "Other"
-    ],
+    Dog: ["Golden Retriever", "Poodle", "Beagle", "Other"],
+    Cat: ["Persian", "Siamese", "British Shorthair", "Other"],
+    Rabbit: ["Holland Lop", "Lionhead", "Other"],
+    Bird: ["Cockatiel", "Parakeet", "Other"],
     Other: ["Other"]
   };
 
+  // Species change
   speciesSelect.addEventListener("change", () => {
-    const selectedSpecies = speciesSelect.value;
+    const species = speciesSelect.value;
 
+    // Show/hide custom species field
+    otherSpeciesField.style.display =
+      species === "Other" ? "block" : "none";
+
+    // Reset breed dropdown
     breedSelect.innerHTML =
       '<option value="">Select a breed</option>';
 
-    if (breeds[selectedSpecies]) {
-      breeds[selectedSpecies].forEach((breed) => {
+    if (breeds[species]) {
+      breeds[species].forEach((breed) => {
         const option = document.createElement("option");
         option.value = breed;
         option.textContent = breed;
         breedSelect.appendChild(option);
       });
     }
+
+    // Hide breed custom field when species changes
+    otherBreedField.style.display = "none";
+  });
+
+  // Breed change
+  breedSelect.addEventListener("change", () => {
+    otherBreedField.style.display =
+      breedSelect.value === "Other" ? "block" : "none";
   });
 });
