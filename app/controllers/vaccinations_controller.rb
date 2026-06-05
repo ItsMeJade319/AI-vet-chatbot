@@ -15,6 +15,21 @@ class VaccinationsController < ApplicationController
     end
   end
 
+  def edit
+    @pet = Pet.find(params[:pet_id])
+    @vaccination = @pet.vaccinations.find(params[:id])
+  end
+
+  def update
+    @vaccination = Vaccination.find(params[:id])
+
+    if @vaccination.update(vaccination_params)
+      redirect_to pet_path(@vaccination.pet), notice: "Vaccination updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def vaccination_params

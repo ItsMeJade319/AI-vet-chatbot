@@ -84,26 +84,41 @@
                 </div>
               </div>
                 <div>
-                  <%= link_to "Add vaccines", "", class: "button-vaccines ms-auto "%>
+                  <%= link_to "Add vaccines", new_pet_vaccination_path(@pet), class: "button-vaccines ms-auto "%>
                 </div>
             </div>
 
+<div class="mt-4">
 
-            <div>
-                <% @vaccinations.each do |vaccination| %>
-                  <div class="card my-2">
-                    <div class="card-body">
-                      <p><%= vaccination.brand %></p>
-                    </div>
+  <% if @vaccinations.any? %>
 
-                  </div>
-                <% end %>
-            </div>
-          </div>
+    <% @vaccinations.each_with_index do |vaccination, index| %>
+
+      <div class="d-flex justify-content-between align-items-center border-bottom py-3">
+
+        <div>
+          <span class="fw-bold me-2"><%= index + 1 %>.</span>
+          <%= vaccination.brand %>
         </div>
-        </div>
+
+        <%= link_to "Edit",
+            edit_pet_vaccination_path(@pet, vaccination),
+            class: "btn btn-sm btn-outline-secondary" %>
+
       </div>
 
-    </div>
+    <% end %>
+
+  <% else %>
+
+    <p class="text-muted mb-0">
+      No vaccinations recorded yet.
+    </p>
+
+  <% end %>
 
 </div>
+
+</div>
+          </div>
+        </div>
