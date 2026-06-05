@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_03_065910) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_04_095136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -24,14 +24,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_03_065910) do
   end
 
   create_table "pets", force: :cascade do |t|
-    t.integer "age"
+    t.integer "age_months"
+    t.integer "age_years"
     t.string "breed"
     t.datetime "created_at", null: false
     t.string "name"
     t.string "species"
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.integer "weight"
+    t.decimal "weight"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
