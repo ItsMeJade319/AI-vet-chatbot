@@ -1,4 +1,14 @@
 
+<% if @pet.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @pet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="form-page">
   <div class="form-card">
     <h1>Add a New Pet</h1>

@@ -33,8 +33,9 @@ class PetsController < ApplicationController
     @pet = Pet.find(params[:id])
 
     if @pet.update(pet_params)
-      redirect_to @pet
+      redirect_to pet_path(@pet)
     else
+      puts @pet.errors.full_messages
       render :edit, status: :unprocessable_entity
     end
   end
