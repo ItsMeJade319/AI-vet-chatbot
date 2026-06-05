@@ -1,0 +1,5 @@
+<% if problems.any? %>
+  <% problems.each do |problem| %>
+    <%= render "pets/card_problem", problem: problem %>
+  <% end %>
+<% end %>

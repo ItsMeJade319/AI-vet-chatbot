@@ -33,13 +33,9 @@
       <p style="font-size: 12px">RECENT CONVERSATIONS</p>
     </div>
 
-    <div class="column" id="chats_container">
-      <% if @problems.count > 0 %>
-        <% @problems.each do |problem|%>
-          <%= render "pets/card_problem", problem: problem %>
-        <% end %>
-      <% end %>
-    </div>
+    <%= turbo_frame_tag "chats_container", class: "column" do %>
+      <%= render "pets/chats_container", problems: @problems %>
+    <% end %>
 
   </div>
 

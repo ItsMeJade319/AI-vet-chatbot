@@ -1,4 +1,4 @@
-<%= simple_form_for [pet, problem] do |f| %>
+<%= simple_form_for [pet, problem], data: { turbo_frame: "_top" } do |f| %>
   <%= f.input :description,
               as: :string,
               label: "What is the issue?",

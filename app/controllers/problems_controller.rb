@@ -21,13 +21,16 @@ class ProblemsController < ApplicationController
     gen_title
 
     if @problem.save
+      @problems = @pet.problems.order(created_at: :desc)
+      @message = Message.new
+
       respond_to do |f|
         f.turbo_stream do
-          render turbo_stream: [turbo_stream.prepend("chats_container", partial: "pets/card_problem",
-                                                                        locals: { problem: @problem }),
+          render turbo_stream: [turbo_stream.update("chats_container", partial: "pets/chats_container",
+                                                                        locals: { problems: @problems }),
 
                                 turbo_stream.update("main_panel", partial: "problems/chat",
-                                                                  locals: { pet: @pet, problem: @problem })]
+                                                                  locals: { pet: @pet, problem: @problem, message: @message })]
         end
         f.html
       end
