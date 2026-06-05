@@ -5,7 +5,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
-    @problems = @pet.problems
+    @problems = @pet.problems.order(created_at: :desc)
     @vaccinations = @pet.vaccinations
     @problem = Problem.new
   end

@@ -33,10 +33,10 @@
       <p style="font-size: 12px">RECENT CONVERSATIONS</p>
     </div>
 
-    <div class="column">
+    <div class="column" id="chats_container">
       <% if @problems.count > 0 %>
         <% @problems.each do |problem|%>
-          <%= render "pets/problem", problem: problem %>
+          <%= render "pets/card_problem", problem: problem %>
         <% end %>
       <% end %>
     </div>
