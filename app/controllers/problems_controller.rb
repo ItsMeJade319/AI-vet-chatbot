@@ -57,8 +57,21 @@ class ProblemsController < ApplicationController
   def gen_title
     return if @problem.title != 'untitled'
 
-    new_title = RubyLLM.chat.with_instructions("make short title according to the description and the description of the pet #{pet_context} ").ask(@problem.description).content
-    @problem.title = new_title
+    begin
+      new_title = RubyLLM.chat.with_instructions(instructions).ask(@problem.description).content
+      @problem.title = new_title
+    rescue RubyLLM::BadRequestError => e
+      # Logs the exact Azure policy error to your production logs
+      Rails.logger.warn "RubyLLM filtered content for problem description: #{e.message}"
+
+      # Fallback title so the record can still save and the user isn't blocked
+      @problem.title = "Untitled (Content Flagged)"
+    end
+  end
+
+  def instructions
+    "make short title according to the description and the description of the pet #{pet_context}
+    if any value is undesirable, replace that word with a funny one if possible, if not return 'undesire word"
   end
 
   def pet_context
