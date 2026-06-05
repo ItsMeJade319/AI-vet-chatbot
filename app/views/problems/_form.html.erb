@@ -1,8 +1,24 @@
-<%= simple_form_for [pet, problem] do |f| %>
-  <%= f.input :description,
-              as: :string,
-              label: "What is the issue?",
-              placeholder: "Write a detailed description here...",
-              input_html: { rows: 5, maxlength: 500 } %>
-  <%= f.submit %>
-<% end %>
+
+<div class="mx-auto mt-5" style="max-width: 600px;">
+
+  <h1 class="text-center mb-4">New Problem</h1>
+
+  <%= simple_form_for [pet, problem] do |f| %>
+
+    <%= f.input :description,
+        as: :text,
+        label: "What is the issue?",
+        input_html: {
+          rows: 5,
+          maxlength: 500,
+          placeholder: "Write a detailed description here..."
+        } %>
+
+      <%= f.button :submit,
+          "🩺 Ask the Vet",
+          class: "button-add-pet" %>
+    </div>
+
+  <% end %>
+
+</div>

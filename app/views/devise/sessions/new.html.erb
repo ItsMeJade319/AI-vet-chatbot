@@ -18,10 +18,9 @@
       <%= f.input :remember_me,
                   as: :boolean if devise_mapping.rememberable? %>
 
-
-      <%= f.button :submit,
-                   "Log in",
-                   class: "btn-primary-custom d-flex" %>
+    <div class="d-flex justify-content-center">
+      <%= f.button :submit, "Log in", class: "button-login d-flex" %>
+      </div>
 
     <% end %>
 

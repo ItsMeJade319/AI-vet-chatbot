@@ -1,4 +1,10 @@
-.button-login {
+
+.button-login,
+.button-add-pet,
+.button-vaccines {
+  background-color: #faa59b;
+  border: 2px solid #111;
+  border-radius: 8px;
   display: inline-flex;
   align-items: center;
   background-color: #fee6e3;
