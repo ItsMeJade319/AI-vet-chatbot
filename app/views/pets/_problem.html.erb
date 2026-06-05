@@ -1,0 +1,10 @@
+          <%= link_to problem_path(problem),
+                      data: { turbo_stream: true },
+                      class: "text-decoration-none text-dark d-block mx-2 my-2" do %>
+            <div class="card" style="background: #f6f6c4;">
+              <div class="card-body">
+                <p style="font-weight: 600; font-size: 16px;"><%= problem.title %></p>
+                <p style="font-size: 13px; color: #808080"><%= problem.description %></p>
+              </div>
+            </div>
+          <% end %>
