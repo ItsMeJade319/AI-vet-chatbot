@@ -1,47 +1,53 @@
+
 <div class="d-flex flex-row vh-100">
 
-  <div class="h-100 border" style="width: 400px;" id="sidebar">
+  <div class="h-100 border d-flex flex-column" style="width: 400px;" id="sidebar">
+
     <div>
       <%= link_to "New Chat", new_pet_problem_path(@pet), class: "button-newchat mb-5", data: { turbo_stream: true } %>
     </div>
 
-    <div class="card mx-2" style="background: #f6f6c4 ">
-      <div class="card-body ">
-        <div class="d-flex flex-row align-items-center">
-          <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1;">
-          <% if @pet.species == "dog" %>
-            🐕
-          <% elsif @pet.species == "cat" %>
-            🐈
-          <% else %>
-            🐾
-          <% end %>
-          </div>
+    <%= link_to pet_path(@pet), class: "text-decoration-none text-dark d-block mx-2" do %>
+      <div class="card" style="background: #f6f6c4;">
+        <div class="card-body">
+          <div class="d-flex flex-row align-items-center">
+            <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1;">
+            <% if @pet.species == "dog" %>
+              🐕
+            <% elsif @pet.species == "cat" %>
+              🐈
+            <% else %>
+              🐾
+            <% end %>
 
-          <div class="">
-            <h3 style="margin-bottom: -3px"><%= @pet.name %></h3>
-            <span style="font-size: 13px"><%= @pet.breed %></span>
-            <span style="font-size: 13px"><%= @pet.age_years %> years</span>
-            <span style="font-size: 13px"><%= @pet.age_months %> months</span>
-            <span style="font-size: 13px"><%= @pet.weight %> kg</span>
+            </div>
+
+            <div class="">
+              <h3 style="margin-bottom: -3px"><%= @pet.name %></h3>
+              <span style="font-size: 13px"><%= @pet.breed %></span>
+              <span style="font-size: 13px"><%= @pet.age_years %> years</span>
+              <span style="font-size: 13px"><%= @pet.age_months %> months</span>
+              <span style="font-size: 13px"><%= @pet.weight %> kg</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="column ms-4 my-4">
       <p style="font-size: 12px">RECENT CONVERSATIONS</p>
     </div>
 
-    <div class="column">
-      <% if @problems.count > 0 %>
-        <% @problems.each do |problem|%>
-          <%= render "pets/problem", problem: problem %>
+      <div class="column flex-grow-1 overflow-y-auto" style="min-height: 0;">
+        <% if @problems.count > 0 %>
+          <% @problems.each do |problem|%>
+            <%= render "pets/problem", problem: problem %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
 
-  </div>
+
 
     <div class="h-100 w-100" id="main_panel">
 
@@ -80,6 +86,8 @@
                 </div>
             </div>
 
+
+
 <div class="mt-4">
 
   <% if @vaccinations.any? %>
@@ -114,3 +122,5 @@
 </div>
           </div>
         </div>
+
+</div>
