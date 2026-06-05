@@ -1,8 +1,32 @@
-<%= simple_form_for [pet, problem], data: { turbo_frame: "_top" } do |f| %>
-  <%= f.input :description,
-              as: :string,
-              label: "What is the issue?",
-              placeholder: "Write a detailed description here...",
-              input_html: { rows: 5, maxlength: 500 } %>
-  <%= f.submit %>
-<% end %>
+<div class="chat-shell">
+  <div class="chat-header">
+    <div class="mx-auto" style="max-width: 880px;">
+      <p class="chat-kicker">New conversation</p>
+      <h1 class="chat-title">What is going on with <%= pet.name %>?</h1>
+      <p class="chat-subtitle">Describe symptoms, behavior changes, appetite, energy level, and anything else that seems off.</p>
+    </div>
+  </div>
+
+  <div class="chat-thread">
+    <div class="chat-thread-inner chat-thread-inner-empty">
+      <div class="chat-form-context">
+        <%= render "pets/details_cards", pet: pet %>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-composer">
+    <div class="chat-composer-card">
+      <%= simple_form_for [pet, problem], data: { turbo_frame: "_top" }, html: { class: "chat-form" } do |f| %>
+        <%= f.input :description,
+                    as: :text,
+                    label: false,
+                    placeholder: "Write a detailed description here...",
+                    input_html: { rows: 3, maxlength: 500 } %>
+        <div class="d-flex justify-content-end">
+          <%= f.button :submit, "Start chat", class: "chat-form-submit" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
