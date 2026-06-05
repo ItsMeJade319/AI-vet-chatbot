@@ -10,14 +10,14 @@
   <h6>Age</h6>
   <div class="d-flex align-items-center gap-2">
 
-  <%= f.select :age,
+  <%= f.select :age_years,
       (0..30).to_a,
       { prompt: "Year" },
       { class: "form-select" } %>
 
   <span>Years</span>
 
-  <%= f.select :age,
+  <%= f.select :age_months,
       (0..11).to_a,
       { prompt: "Month" },
       { class: "form-select" } %>
@@ -26,33 +26,16 @@
 
 </div>
 
-<%= f.input :species,
-    collection: ["Dog", "Cat", "Rabbit", "Bird", "Other"],
-    prompt: "Select a species",
-    input_html: { id: "species-select" } %>
+
+<div id="other-species-field">
+    <%= f.input :species%>
+  </div>
+
+  <div id="other-breed-field">
+    <%= f.input :breed %>
+  </div>
 
 
-<%= f.input :breed,
-    collection: [
-      "Golden Retriever",
-      "Poodle",
-      "Beagle",
-      "Persian",
-      "Siamese",
-      "British Shorthair",
-      "Holland Lop",
-      "Lionhead",
-      "Cockatiel",
-      "Parakeet",
-      "Other"
-    ],
-    prompt: "Select a breed" %>
-
-<div id="other-breed-field" style="display: none;">
-  <%= f.input :breed,
-      label: "If other, please specify",
-      required: false %>
-</div>
 
 
   <%= f.input :weight, label: "Weight (kg)" %>
