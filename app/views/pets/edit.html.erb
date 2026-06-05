@@ -26,33 +26,16 @@
 
 </div>
 
-<%= f.input :species,
-    collection: ["Dog", "Cat", "Rabbit", "Bird", "Other"],
-    prompt: "Select a species",
-    input_html: { id: "species-select" } %>
+
+<div id="other-species-field">
+    <%= f.input :species%>
+  </div>
+
+  <div id="other-breed-field">
+    <%= f.input :breed %>
+  </div>
 
 
-<%= f.input :breed,
-    collection: [
-      "Golden Retriever",
-      "Poodle",
-      "Beagle",
-      "Persian",
-      "Siamese",
-      "British Shorthair",
-      "Holland Lop",
-      "Lionhead",
-      "Cockatiel",
-      "Parakeet",
-      "Other"
-    ],
-    prompt: "Select a breed" %>
-
-<div id="other-breed-field" style="display: none;">
-  <%= f.input :breed,
-      label: "If other, please specify",
-      required: false %>
-</div>
 
 
   <%= f.input :weight, label: "Weight (kg)" %>
