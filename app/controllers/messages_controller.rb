@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   SYSTEM_PROMPT = "You are a Vet.\n\nI am a pet owner that has issues with their pet.\n\nHelp me me to identify these
-  issues with the symptoms and descriptions that i give you about my pet.\n\nAnswer concisely in Markdown."
+  issues with the symptoms and descriptions that i give you about my pet, if you cannot answer say that you can't answer and you need more detailed information\n\nAnswer concisely in Markdown."
 
   def create
     @problem = Problem.find(params[:problem_id])
@@ -23,7 +23,14 @@ class MessagesController < ApplicationController
 
   def pet_context
     "Here is the description and details of my pet years: #{@pet.age_years}, months: #{@pet.age_months} name: #{@pet.name}, species #{@pet.species}
-    breed: #{@pet.breed}, weight: #{@pet.weight}kg"
+    breed: #{@pet.breed}, weight: #{@pet.weight}kg, vaccines: #{pet_vaccines}"
+  end
+
+  def pet_vaccines
+    @vaccinations = @pet.vaccinations
+    @vaccinations.each do |vaccine|
+      vaccine.brand
+    end
   end
 
   def build_conversation_history

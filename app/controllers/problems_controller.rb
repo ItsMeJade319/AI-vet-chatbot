@@ -27,7 +27,7 @@ class ProblemsController < ApplicationController
       respond_to do |f|
         f.turbo_stream do
           render turbo_stream: [turbo_stream.update("chats_container", partial: "pets/chats_container",
-                                                                        locals: { problems: @problems }),
+                                                                       locals: { problems: @problems }),
 
                                 turbo_stream.update("main_panel", partial: "problems/chat",
                                                                   locals: { pet: @pet, problem: @problem, message: @message })]
@@ -57,8 +57,13 @@ class ProblemsController < ApplicationController
   def gen_title
     return if @problem.title != 'untitled'
 
-    new_title = RubyLLM.chat.with_instructions("make short title according to the description").ask(@problem.description).content
+    new_title = RubyLLM.chat.with_instructions("make short title according to the description and the description of the pet #{pet_context} ").ask(@problem.description).content
     @problem.title = new_title
+  end
+
+  def pet_context
+    "Here is the description and details of my pet years: #{@pet.age_years}, months: #{@pet.age_months} name: #{@pet.name}, species #{@pet.species}
+    breed: #{@pet.breed}, weight: #{@pet.weight}kg"
   end
 
   def problem_params
