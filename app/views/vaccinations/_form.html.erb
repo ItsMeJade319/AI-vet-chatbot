@@ -1,0 +1,38 @@
+
+
+<div class="vaccination-form">
+  <div class="card vaccination-card">
+    <div class="card-body">
+
+<%= form_with model: [@pet, @vaccination] do |f| %>
+
+  <div class="mb-5">
+    <%= f.label :brand %>
+    <%= f.text_field :brand, class: "form-control" %>
+  </div>
+
+  <div class="mb-5">
+    <%= f.label :diseases %>
+    <%= f.text_field :diseases, class: "form-control" %>
+  </div>
+
+  <div class="mb-5">
+    <%= f.label :target_species %>
+    <%= f.select :target_species,
+          ["dog", "cat", "other"],
+          {},
+          class: "form-control" %>
+  </div>
+
+<div class="d-flex justify-content-center">
+  <%= f.submit "Sumbit",  class: "button-add-pet" %>
+  </div>
+
+
+
+
+<% end %>
+    </div>
+  </div>
+</div>
+</div>

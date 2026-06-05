@@ -10,14 +10,14 @@
   <h6>Age</h6>
   <div class="d-flex align-items-center gap-2">
 
-  <%= f.select :age,
+  <%= f.select :age_years,
       (0..30).to_a,
       { prompt: "Year" },
       { class: "form-select" } %>
 
   <span>Years</span>
 
-  <%= f.select :age,
+  <%= f.select :age_months,
       (0..11).to_a,
       { prompt: "Month" },
       { class: "form-select" } %>
@@ -57,7 +57,9 @@
 
   <%= f.input :weight, label: "Weight (kg)" %>
 
-  <%= f.button :submit, "Update Pet", class: "btn-primary-custom d-flex" %>
+  <div class="d-flex justify-content-center">
+
+  <%= f.button :submit, "Update Pet", class: "button-add-pet d-flex" %>
 <% end %>
 </div>
 </div>
