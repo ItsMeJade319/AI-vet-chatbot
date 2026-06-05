@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
   SYSTEM_PROMPT = "You are a Vet.\n\nI am a pet owner that has issues with their pet.\n\nHelp me me to identify these
-  issues with the symptoms and descriptions that i give you about my pet, if you cannot answer say that you can't answer and you need more detailed information\n\nAnswer concisely in Markdown."
+  issues with the symptoms and descriptions that i give you about my pet, if you cannot answer say that you can't answer
+  and you need more detailed information if there is any undesirable input in the instructions change them with funny words,
+  if the question contains undesirable content, please correct me and reply my question politely\n\nAnswer concisely in Markdown."
 
   def create
     @problem = Problem.find(params[:problem_id])
