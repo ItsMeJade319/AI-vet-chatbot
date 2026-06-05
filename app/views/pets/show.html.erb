@@ -5,6 +5,7 @@
       <%= link_to "New Chat", new_pet_problem_path(@pet), class: "button-newchat mb-5", data: { turbo_stream: true } %>
     </div>
 
+<%= link_to pet_path(@pet), class: "text-decoration-none text-dark d-block mx-2" do %>
     <div class="card mx-2" style="background: #f6f6c4 ">
       <div class="card-body ">
         <div class="d-flex flex-row align-items-center">
@@ -28,6 +29,7 @@
         </div>
       </div>
     </div>
+<% end %>
 
     <div class="column ms-4 my-4">
       <p style="font-size: 12px">RECENT CONVERSATIONS</p>
