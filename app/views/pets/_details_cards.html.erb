@@ -1,0 +1,56 @@
+<div class="pet-overview-grid">
+  <div class="card pet-overview-card">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center gap-3 flex-wrap">
+        <div class="d-flex align-items-center">
+          <div class="rounded-circle border d-flex align-items-center justify-content-center me-3 pet-overview-avatar">
+            <% if pet.species == "dog" %>
+              🐕
+            <% elsif pet.species == "cat" %>
+              🐈
+            <% else %>
+              🐾
+            <% end %>
+          </div>
+
+          <div>
+            <h3 class="mb-1"><%= pet.name %></h3>
+            <p class="pet-overview-meta mb-0"><%= pet.breed %></p>
+            <p class="pet-overview-meta mb-0"><%= pet.age_years %> years, <%= pet.age_months %> months</p>
+            <p class="pet-overview-meta mb-0"><%= pet.weight %> kg</p>
+          </div>
+        </div>
+
+        <%= link_to "Add vaccines", new_pet_vaccination_path(pet), class: "button-vaccines" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card pet-overview-card">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h4 class="pet-overview-section-title mb-0">Vaccinations</h4>
+        <span class="pet-overview-count"><%= pet.vaccinations.count %></span>
+      </div>
+
+      <% if pet.vaccinations.any? %>
+        <div class="pet-vaccination-list">
+          <% pet.vaccinations.each_with_index do |vaccination, index| %>
+            <div class="pet-vaccination-item">
+              <div>
+                <span class="pet-vaccination-index"><%= index + 1 %>.</span>
+                <span><%= vaccination.brand %></span>
+              </div>
+
+              <%= link_to "Edit",
+                  edit_pet_vaccination_path(pet, vaccination),
+                  class: "btn btn-sm btn-outline-secondary" %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-muted mb-0">No vaccinations recorded yet.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

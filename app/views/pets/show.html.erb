@@ -1,4 +1,4 @@
-<div class="d-flex flex-row vh-100">
+<div class="d-flex flex-row pet-layout">
 
   <div class="h-100 border" style="width: 400px;" id="sidebar">
     <div>
@@ -33,13 +33,9 @@
       <p style="font-size: 12px">RECENT CONVERSATIONS</p>
     </div>
 
-    <div class="column">
-      <% if @problems.count > 0 %>
-        <% @problems.each do |problem|%>
-          <%= render "pets/problem", problem: problem %>
-        <% end %>
-      <% end %>
-    </div>
+    <%= turbo_frame_tag "chats_container", class: "column" do %>
+      <%= render "pets/chats_container", problems: @problems %>
+    <% end %>
 
   </div>
 
@@ -52,65 +48,5 @@
             <%= @pet.name.capitalize %></span> today?</p>
             <p>Ask me anything about <%= @pet.name.capitalize %>'s health, nutrition, behavior, or care. I'm here to provide personalized veterinary guidance.</p>
           </div>
-        <div class="card mx-2">
-          <div class="card-body ">
-            <div class="d-flex justify-content-between align-items-center ">
-
-              <div class="d-flex">
-                <div class="rounded-circle border d-flex align-items-center justify-content-center me-2" style="width: 50px; height: 50px; font-size: 35px; line-height: 1; ">
-                  <% if @pet.species == "dog" %>
-                    🐕
-                  <% elsif @pet.species == "cat" %>
-                    🐈
-                  <% else %>
-                    🐾
-                  <% end %>
-                </div>
-
-                <div class="">
-                  <h3 style="margin-bottom: -3px"><%= @pet.name %></h3>
-                  <span style="font-size: 13px"><%= @pet.breed %></span>
-                  <span style="font-size: 13px"><%= @pet.age_years %> years</span>
-                   <span style="font-size: 13px"><%= @pet.age_months %> months</span>
-                  <span style="font-size: 13px"><%= @pet.weight %> kg</span>
-                </div>
-              </div>
-                <div>
-                  <%= link_to "Add vaccines", new_pet_vaccination_path(@pet), class: "button-vaccines ms-auto "%>
-                </div>
-            </div>
-
-<div class="mt-4">
-
-  <% if @vaccinations.any? %>
-
-    <% @vaccinations.each_with_index do |vaccination, index| %>
-
-      <div class="d-flex justify-content-between align-items-center border-bottom py-3">
-
-        <div>
-          <span class="fw-bold me-2"><%= index + 1 %>.</span>
-          <%= vaccination.brand %>
-        </div>
-
-        <%= link_to "Edit",
-            edit_pet_vaccination_path(@pet, vaccination),
-            class: "btn btn-sm btn-outline-secondary" %>
-
-      </div>
-
-    <% end %>
-
-  <% else %>
-
-    <p class="text-muted mb-0">
-      No vaccinations recorded yet.
-    </p>
-
-  <% end %>
-
-</div>
-
-</div>
-          </div>
+        <%= render "pets/details_cards", pet: @pet %>
         </div>

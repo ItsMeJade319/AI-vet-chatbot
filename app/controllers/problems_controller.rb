@@ -17,9 +17,23 @@ class ProblemsController < ApplicationController
     @pet = Pet.find(params[:pet_id])
     @problem.pet = @pet
     @problem.title = 'untitled'
+
     gen_title
+
     if @problem.save
-      redirect_to problem_path(@problem)
+      @problems = @pet.problems.order(created_at: :desc)
+      @message = Message.new
+
+      respond_to do |f|
+        f.turbo_stream do
+          render turbo_stream: [turbo_stream.update("chats_container", partial: "pets/chats_container",
+                                                                        locals: { problems: @problems }),
+
+                                turbo_stream.update("main_panel", partial: "problems/chat",
+                                                                  locals: { pet: @pet, problem: @problem, message: @message })]
+        end
+        f.html
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +45,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.update("main_panel", partial: "problems/chat",
+        render turbo_stream: turbo_stream.update("main_panel", template: "problems/show",
                                                                locals: { problem: @problem, message: @message })
       end
       format.html
