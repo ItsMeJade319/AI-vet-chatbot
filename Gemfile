@@ -73,6 +73,6 @@ group :test do
 end
 
 gem "devise"
-gem "ruby_llm", "~> 1.2.0"
+gem "ruby_llm", "~> 1.16.0"
 gem "kramdown"
 gem 'kramdown-parser-gfm'
